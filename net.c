@@ -2,11 +2,23 @@
 #include "glyphs.c"
 
 //GRAPHICS
+#if 1
+
+//STREAM SCREEN SIZE
+#define WINDOW_WIDTH 1770
+#define WINDOW_HEIGHT 1405
+#define WINDOW_X 10
+#define WINDOW_Y -20
+
+#else
+
+//FULL SCREEN (2560/1440)
 #define WINDOW_WIDTH 2560
 #define WINDOW_HEIGHT 1440
 #define WINDOW_X -10
 #define WINDOW_Y -35
 
+#endif
 
 //SPECIFY PARAMETERS
 #define H 0.0375
@@ -556,7 +568,7 @@ void render_cost(SDL_Renderer *renderer, int x, int y, int w, int h)
 
 
     SDL_SetRenderDrawColor(renderer,0x55,0x55,0x55,255);
-    SDL_RenderDrawRect(renderer, &rect);
+    //SDL_RenderDrawRect(renderer, &rect);
 
     rect.w = 5;
     rect.h = 5;
@@ -863,19 +875,19 @@ void render_screen(SDL_Renderer *renderer, Network n)
     //SDL_RenderPresent(renderer);
 
 
-    int Nx = 600;
-    int Ny = 200;
-    int Nw = 1300;
-    int Nh = 1000;
+    int Nx = (WINDOW_WIDTH / 100.f) * 23.34375;
+    int Ny = (WINDOW_HEIGHT / 100.f) * 14.2;
+    int Nw = (WINDOW_WIDTH / 100.f) * 50;
+    int Nh = (WINDOW_HEIGHT / 100.f) * 70;
     
 
     render_network(renderer, arch, ARCH_COUNT(arch), Nx, Ny, Nw, Nh,n);
 
 
-    int Ix = 1900;
-    int Iy = 50;
-    int Iw = 500;
-    int Ih = 1300;
+    int Ix = (WINDOW_WIDTH / 100.f) * 74.218;
+    int Iy = (WINDOW_HEIGHT / 100.f) * 3.5;
+    int Iw = (WINDOW_WIDTH / 100.f) * 19;
+    int Ih = (WINDOW_HEIGHT / 100.f) * 90;
     
     if(paused == false) {
         render_images(renderer, Ix, Iy, Iw, Ih, n);
@@ -885,33 +897,33 @@ void render_screen(SDL_Renderer *renderer, Network n)
 
     }
 
-    int Cx = 50;
-    int Cy = (WINDOW_HEIGHT - 550.f) / 2.f;
-    int Cw = 550;
-    int Ch = 550;
+    int Cx = (WINDOW_WIDTH / 100.f) * 2;
+    int Cy = (WINDOW_HEIGHT /100.f) * 28;
+    int Cw = (WINDOW_WIDTH / 100.f) * 17.5;
+    int Ch = (WINDOW_HEIGHT / 100.f) * 27.19;
 
     render_cost(renderer, Cx, Cy, Cw, Ch);
 
-    int CVx = 50;
-    int CVy = 50;
-    int CVw = 550;
-    int CVh = 300;
+    int CVx = (WINDOW_WIDTH / 100.f) * 2;
+    int CVy = (WINDOW_HEIGHT / 100.f) * 3.5;
+    int CVw = (WINDOW_WIDTH / 100.f) * 21.5;
+    int CVh = (WINDOW_HEIGHT / 100.f) * 20.8;
 
     render_cost_val(renderer, CVx, CVy, CVw, CVh, n);
 
 
-    int Rx = 50;
-    int Ry = 1100;
-    int Rw = 550;
-    int Rh = 300;
+    int Rx = (WINDOW_WIDTH / 100.f) * 2;
+    int Ry = (WINDOW_HEIGHT / 100.f) * 76.3;
+    int Rw = (WINDOW_WIDTH / 100.f) * 21.5;
+    int Rh = (WINDOW_HEIGHT / 100.f) * 20.83;
 
     render_rate(renderer, Rx, Ry, Rw, Rh);
 
 
-    int Px = 950;
-    int Py = 1330;
-    int Pw = 550;
-    int Ph = 75;
+    int Px = (WINDOW_WIDTH / 100.f) * 37.1;
+    int Py = (WINDOW_HEIGHT / 100.f) * 92.36;
+    int Pw = (WINDOW_WIDTH / 100.f) * 21.48;
+    int Ph = (WINDOW_HEIGHT / 100.f) * 5.2;
 
     if(paused == true) {
         render_paused(renderer, Px, Py, Pw, Ph);
